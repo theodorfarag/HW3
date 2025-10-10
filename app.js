@@ -42,20 +42,26 @@ function renderTable(minCol, minRow, maxCol, maxRow) {
 
 function errorCheck() {
     const error = "Error: "
-    if (isNaN(minCol.value) || !minCol.value || isNaN(maxCol.value) ||
-    !maxCol.value || isNaN(minRow.value) || !minRow.value || !maxRow.value || isNaN(maxRow.value)) {
+
+    const minRowVal = Number(minRow.value);
+    const minColVal = Number(minCol.value);
+    const maxColVal = Number(maxCol.value);
+    const maxRowVal = Number(maxRow.value);
+
+    if (isNaN(minColVal) || !minColVal || isNaN(maxColVal) ||
+    !maxColVal || isNaN(minRowVal) || !minRowVal || !maxRowVal || isNaN(maxRowVal)) {
         errorMsg.classList.remove("d-none");
         errorMsg.textContent = error + "One of the feilds were left empty. Ensure all feilds have a valid value between -50 and 50";
         return true;
-    } else if (minCol.value < -50 || minRow < -50) {
+    } else if (minColVal < -50 || minRow < -50) {
         errorMsg.classList.remove("d-none");
         errorMsg.textContent = error + "One of the minimum feilds has a number less than -50. Ensure all feilds have a valid value between -50 and 50";
         return true;
-    } else if (maxCol.value > 50 || maxRow.value > 50) {
+    } else if (maxColVal > 50 || maxRowVal > 50) {
         errorMsg.classList.remove("d-none");
         errorMsg.textContent = error + "One of the maximum feilds has a number less than -50. Ensure all feilds have a valid value between -50 and 50";
         return true;
-    } else if (maxCol.value < minCol.value || maxRow.value < minRow.value) {
+    } else if (maxColVal < minColVal || maxRowVal < minRowVal) {
         errorMsg.classList.remove("d-none");
         errorMsg.textContent = error + "One of of minumum values have a greater value than its max. Ensure all feilds have a valid value between -50 and 50 that isn't greater than its max";
         return true;
