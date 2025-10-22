@@ -79,7 +79,6 @@ tr#thead > th {
 /* Top-left corner cell (intersection of sticky header & first column) should be highest z-index */
 tr#thead > th:first-child {
     left: 0;
-     z-index: 3; /* Above both header row and first column */
-
+    z-index: 3; /* Above both header row and first column */
 }
 
